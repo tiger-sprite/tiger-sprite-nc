@@ -1,0 +1,31 @@
+﻿OC.L10N.register(
+    "tigersprite",
+    {
+    "TigerSprite": "TigerSprite",
+    "Configure TigerSprite Markdown to PDF conversion for files.": "TigerSprite の Markdown から PDF への変換を設定します。",
+    "Enable TigerSprite": "TigerSprite を有効化",
+    "Runtime mode": "実行モード",
+    "CLI": "CLI",
+    "PHP executable path": "PHP 実行ファイルのパス",
+    "TigerSprite CLI path": "TigerSprite CLI パス",
+    "PDF generator": "PDF 生成エンジン",
+    "Auto": "自動",
+    "Output behavior": "出力方法",
+    "Download": "ダウンロード",
+    "Save to current directory": "現在のディレクトリに保存",
+    "Cache retention days": "キャッシュ保持日数",
+    "Enable debug logging": "デバッグログを有効化",
+    "Save": "保存",
+    "TigerSprite Export to PDF": "TigerSprite Export to PDF",
+    "TigerSprite is disabled by the administrator.": "TigerSprite は管理者によって無効化されています。",
+    "TigerSprite CLI path is not configured.": "TigerSprite CLI パスが設定されていません。",
+    "Failed to convert file.": "ファイルの変換に失敗しました。",
+    "Failed to convert file": "ファイルの変換に失敗しました",
+    "File successfully converted": "ファイルは正常に変換されました",
+    "The file cannot be found.": "ファイルが見つかりません。",
+    "TigerSprite supports only Markdown files.": "TigerSprite は Markdown ファイルのみ対応しています。",
+    "You do not have permission to create a file in this directory.": "このディレクトリにファイルを作成する権限がありません。",
+    "User session is not available.": "ユーザーセッションを利用できません。"
+},
+    "nplurals=1; plural=0;"
+);

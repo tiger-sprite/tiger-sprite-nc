@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<info>
+	<id>tigersprite</id>
+	<name>TigerSprite</name>
+	<summary>Export Markdown files to PDF with TigerSprite</summary>
+	<description><![CDATA[Adds a TigerSprite Export to PDF action for Markdown files in Nextcloud.]]></description>
+	<licence>agpl</licence>
+	<author mail="tiger@ebf.hk">XTiger</author>
+	<version>0.1.0</version>
+	<namespace>Tigersprite</namespace>
+	<category>files</category>
+	<category>tools</category>
+	<dependencies>
+		<nextcloud min-version="30" max-version="32"/>
+	</dependencies>
+	<settings>
+		<admin>OCA\Tigersprite\AdminSettings</admin>
+		<admin-section>OCA\Tigersprite\AdminSection</admin-section>
+	</settings>
+	<background-jobs>
+		<job>OCA\Tigersprite\BackgroundJob\CleanupJob</job>
+	</background-jobs>
+</info>

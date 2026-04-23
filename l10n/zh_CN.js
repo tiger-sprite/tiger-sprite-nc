@@ -1,0 +1,31 @@
+﻿OC.L10N.register(
+    "tigersprite",
+    {
+    "TigerSprite": "TigerSprite",
+    "Configure TigerSprite Markdown to PDF conversion for files.": "配置 TigerSprite 的 Markdown 转 PDF 功能。",
+    "Enable TigerSprite": "启用 TigerSprite",
+    "Runtime mode": "运行模式",
+    "CLI": "CLI",
+    "PHP executable path": "PHP 可执行路径",
+    "TigerSprite CLI path": "TigerSprite CLI 路径",
+    "PDF generator": "PDF 生成器",
+    "Auto": "自动",
+    "Output behavior": "输出行为",
+    "Download": "下载",
+    "Save to current directory": "保存到当前目录",
+    "Cache retention days": "缓存保留天数",
+    "Enable debug logging": "启用调试日志",
+    "Save": "保存",
+    "TigerSprite Export to PDF": "TigerSprite 导出为 PDF",
+    "TigerSprite is disabled by the administrator.": "TigerSprite 已被管理员禁用。",
+    "TigerSprite CLI path is not configured.": "尚未配置 TigerSprite CLI 路径。",
+    "Failed to convert file.": "转换文件失败。",
+    "Failed to convert file": "转换文件失败",
+    "File successfully converted": "文件已成功转换",
+    "The file cannot be found.": "找不到该文件。",
+    "TigerSprite supports only Markdown files.": "TigerSprite 仅支持 Markdown 文件。",
+    "You do not have permission to create a file in this directory.": "你没有权限在此目录创建文件。",
+    "User session is not available.": "当前用户会话不可用。"
+},
+    "nplurals=1; plural=0;"
+);

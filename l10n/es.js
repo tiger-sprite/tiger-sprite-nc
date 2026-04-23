@@ -1,0 +1,31 @@
+OC.L10N.register(
+    "tigersprite",
+    {
+    "TigerSprite": "TigerSprite",
+    "Configure TigerSprite Markdown to PDF conversion for files.": "Configura la conversión de Markdown a PDF con TigerSprite.",
+    "Enable TigerSprite": "Activar TigerSprite",
+    "Runtime mode": "Modo de ejecución",
+    "CLI": "CLI",
+    "PHP executable path": "Ruta del ejecutable PHP",
+    "TigerSprite CLI path": "Ruta del CLI de TigerSprite",
+    "PDF generator": "Generador PDF",
+    "Auto": "Automático",
+    "Output behavior": "Comportamiento de salida",
+    "Download": "Descargar",
+    "Save to current directory": "Guardar en el directorio actual",
+    "Cache retention days": "Días de retención de caché",
+    "Enable debug logging": "Activar registro de depuración",
+    "Save": "Guardar",
+    "TigerSprite Export to PDF": "TigerSprite Export to PDF",
+    "TigerSprite is disabled by the administrator.": "TigerSprite está desactivado por el administrador.",
+    "TigerSprite CLI path is not configured.": "La ruta del CLI de TigerSprite no está configurada.",
+    "Failed to convert file.": "No se pudo convertir el archivo.",
+    "Failed to convert file": "No se pudo convertir el archivo",
+    "File successfully converted": "Archivo convertido correctamente",
+    "The file cannot be found.": "No se puede encontrar el archivo.",
+    "TigerSprite supports only Markdown files.": "TigerSprite solo admite archivos Markdown.",
+    "You do not have permission to create a file in this directory.": "No tienes permiso para crear un archivo en este directorio.",
+    "User session is not available.": "La sesión del usuario no está disponible."
+},
+    "nplurals=2; plural=(n != 1);"
+);
