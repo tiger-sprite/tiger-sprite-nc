@@ -5,7 +5,7 @@
 	<summary>Export Markdown files to PDF with TigerSprite</summary>
 	<description><![CDATA[Adds a TigerSprite Export to PDF action for Markdown files in Nextcloud.]]></description>
 	<licence>agpl</licence>
-	<author mail="tiger@ebf.hk">XTiger</author>
+	<author mail="dev@ebf.hk">XTiger</author>
 	<version>0.1.3</version>
 	<namespace>Tigersprite</namespace>
 	<category>files</category>
