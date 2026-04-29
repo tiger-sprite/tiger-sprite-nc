@@ -10,6 +10,7 @@ use OCA\Tigersprite\Service\TigerSpriteConversionService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\Files\File;
@@ -30,7 +31,9 @@ class ConversionController extends Controller {
 	}
 
 	#[NoAdminRequired]
+	#[NoCSRFRequired]
 	public function download(int $fileId): DataDownloadResponse {
+		$this->ensureEnabled();
 		$file = $this->getMarkdownFile($fileId);
 		$result = $this->conversionService->convertFileToPdf($file);
 		try {
@@ -47,6 +50,7 @@ class ConversionController extends Controller {
 	#[NoAdminRequired]
 	public function save(int $fileId): DataResponse {
 		try {
+			$this->ensureEnabled();
 			$file = $this->getMarkdownFile($fileId);
 			$parent = $file->getParent();
 			if (!$parent->isCreatable()) {
@@ -79,6 +83,12 @@ class ConversionController extends Controller {
 			return new DataResponse([
 				'error' => $e->getMessage(),
 			], Http::STATUS_BAD_REQUEST);
+		}
+	}
+
+	private function ensureEnabled(): void {
+		if (!$this->configService->isEnabled()) {
+			throw new \RuntimeException($this->l10n->t('TigerSprite is disabled.'));
 		}
 	}
 

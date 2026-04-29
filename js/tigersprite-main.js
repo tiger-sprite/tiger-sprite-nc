@@ -71,7 +71,42 @@
 			return
 		}
 
-		window.location.href = OC.generateUrl('/apps/tigersprite/download/{fileId}', { fileId })
+		const iframeId = 'tigersprite-download-frame'
+		let iframe = document.getElementById(iframeId)
+		if (!iframe) {
+			iframe = document.createElement('iframe')
+			iframe.id = iframeId
+			iframe.name = iframeId
+			iframe.style.display = 'none'
+			document.body.appendChild(iframe)
+		}
+
+		iframe.src = OC.generateUrl('/apps/tigersprite/download/{fileId}', { fileId })
+	}
+
+	OCA.TigerSprite.saveToCurrentDirectory = async function(fileId) {
+		if (!window.OC || typeof OC.generateUrl !== 'function') {
+			return false
+		}
+
+		const response = await fetch(OC.generateUrl('/apps/tigersprite/save/{fileId}', { fileId }), {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				requesttoken: OC.requestToken || '',
+			},
+		})
+		const data = await response.json().catch(() => ({}))
+
+		if (!response.ok) {
+			throw new Error(data.error || OCA.TigerSprite.t('Failed to convert file'))
+		}
+
+		if (window.OCP && OCP.Toast && typeof OCP.Toast.success === 'function') {
+			OCP.Toast.success(data.message || OCA.TigerSprite.t('File successfully converted'))
+		}
+
+		return data
 	}
 
 	OCA.TigerSprite.showError = function(message) {
@@ -91,18 +126,73 @@
 			basename: fileName,
 			permissions: (model && model.attributes && model.attributes.permissions) || (model && model.permissions) || permissionRead,
 		}
-		OCA.TigerSprite.FileClickExec(node)
+		OCA.TigerSprite.FileClickExec(node, null, context.dir || null, context)
 	}
 
-	OCA.TigerSprite.FileClickExec = async function(node) {
+	OCA.TigerSprite.FileClickExec = async function(node, view, dir, context) {
 		const fileId = OCA.TigerSprite.getNodeFileId(node)
 		if (!fileId) {
 			OCA.TigerSprite.showError(OCA.TigerSprite.t('Failed to convert file'))
 			return null
 		}
 
+		if (OCA.TigerSprite.setting.outputBehavior === 'save') {
+			try {
+				const savedFile = await OCA.TigerSprite.saveToCurrentDirectory(fileId)
+				await OCA.TigerSprite.refreshFileList(savedFile, node, view, dir, context)
+				OCA.TigerSprite.clearSelection(node, context)
+			} catch (error) {
+				OCA.TigerSprite.showError(error.message || OCA.TigerSprite.t('Failed to convert file'))
+			}
+			return null
+		}
+
 		OCA.TigerSprite.download(fileId)
 		return null
+	}
+
+	OCA.TigerSprite.refreshFileList = async function(savedFile, sourceNode, view, dir, context) {
+		if (view && typeof view.getContents === 'function') {
+			try {
+				await view.getContents(dir || (sourceNode && sourceNode.dirname) || '/')
+				return
+			} catch (error) {
+				// Fall through to legacy refresh paths for older or partially loaded Files UIs.
+			}
+		}
+
+		if (context && context.fileList && typeof context.fileList.reload === 'function') {
+			context.fileList.reload()
+			return
+		}
+
+		if (OCA.Files && OCA.Files.App && OCA.Files.App.fileList && typeof OCA.Files.App.fileList.reload === 'function') {
+			OCA.Files.App.fileList.reload()
+		}
+	}
+
+	OCA.TigerSprite.clearSelection = function(sourceNode, context) {
+		if (context && context.fileList && typeof context.fileList.unselectAll === 'function') {
+			context.fileList.unselectAll()
+			return
+		}
+
+		const appContent = document.getElementById('app-content-vue') || document.getElementById('app-content') || document
+		const selectors = [
+			'input[type="checkbox"]:checked.files-list__row-checkbox',
+			'.files-list__row-checkbox input[type="checkbox"]:checked',
+			'.selectCheckBox:checked',
+		]
+
+		appContent.querySelectorAll(selectors.join(',')).forEach((checkbox) => {
+			if (typeof checkbox.click === 'function') {
+				checkbox.click()
+				return
+			}
+
+			checkbox.checked = false
+			checkbox.dispatchEvent(new Event('change', { bubbles: true }))
+		})
 	}
 
 	OCA.TigerSprite.registerLegacyAction = function() {
