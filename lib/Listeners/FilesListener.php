@@ -24,7 +24,9 @@ class FilesListener implements IEventListener {
 			return;
 		}
 
-		$this->initialState->provideInitialState('settings', $this->configService->getFrontendState());
+		$this->initialState->provideLazyInitialState('settings', function (): array {
+			return $this->configService->getFrontendState();
+		});
 		Util::addScript(Application::APP_ID, 'tigersprite-main');
 	}
 }

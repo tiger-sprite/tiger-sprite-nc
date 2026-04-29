@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OCA\Tigersprite\AppInfo;
 
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
-use OCA\Tigersprite\Conversion\TigerSpriteConversionProvider;
 use OCA\Tigersprite\Listeners\FilesListener;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
@@ -21,7 +20,6 @@ class Application extends App implements IBootstrap {
 
 	public function register(IRegistrationContext $context): void {
 		$context->registerEventListener(LoadAdditionalScriptsEvent::class, FilesListener::class);
-		$context->registerFileConversionProvider(TigerSpriteConversionProvider::class);
 	}
 
 	public function boot(IBootContext $context): void {

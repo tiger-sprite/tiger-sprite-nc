@@ -54,6 +54,7 @@ $config = $_['config'];
 				<option value="save" <?php if ($config['outputBehavior'] === 'save') { print_unescaped('selected'); } ?>><?php p($l->t('Save to current directory')); ?></option>
 			</select>
 		</p>
+		<div class="settings-hint"><?php p($l->t('Note: In V1, the file action always triggers a download. Saving to the current directory will be enabled in a later version.')); ?></div>
 
 		<p>
 			<label for="tigersprite-retention"><?php p($l->t('Cache retention days')); ?></label><br>

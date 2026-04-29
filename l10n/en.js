@@ -13,6 +13,7 @@ OC.L10N.register(
     "Output behavior": "Output behavior",
     "Download": "Download",
     "Save to current directory": "Save to current directory",
+    "Note: In V1, the file action always triggers a download. Saving to the current directory will be enabled in a later version.": "Note: In V1, the file action always triggers a download. Saving to the current directory will be enabled in a later version.",
     "Cache retention days": "Cache retention days",
     "Enable debug logging": "Enable debug logging",
     "Save": "Save",
