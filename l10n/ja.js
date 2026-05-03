@@ -25,7 +25,19 @@
     "The file cannot be found.": "ファイルが見つかりません。",
     "TigerSprite supports only Markdown files.": "TigerSprite は Markdown ファイルのみ対応しています。",
     "You do not have permission to create a file in this directory.": "このディレクトリにファイルを作成する権限がありません。",
-    "User session is not available.": "ユーザーセッションを利用できません。"
+    "User session is not available.": "ユーザーセッションを利用できません。",
+    "Settings saved successfully": "Settings saved successfully",
+    "Failed to save settings": "Failed to save settings",
+    "General": "General",
+    "Enable or disable the TigerSprite PDF export functionality for Markdown files.": "Enable or disable the TigerSprite PDF export functionality for Markdown files.",
+    "Path to the PHP binary (e.g., /usr/bin/php or php).": "Path to the PHP binary (e.g., /usr/bin/php or php).",
+    "Path to the TigerSprite CLI entry script (cli.php).": "Path to the TigerSprite CLI entry script (cli.php).",
+    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.",
+    "Whether to download the PDF directly or save it alongside the Markdown file.": "Whether to download the PDF directly or save it alongside the Markdown file.",
+    "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).": "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).",
+    "Log detailed conversion information to the Nextcloud log for troubleshooting.": "Log detailed conversion information to the Nextcloud log for troubleshooting.",
+    "PDF Settings": "PDF Settings",
+    "Debug": "Debug"
 },
     "nplurals=1; plural=0;"
 );

@@ -8,6 +8,7 @@ use OCA\Tigersprite\AppInfo\Application;
 use OCA\Tigersprite\Service\ConfigService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Settings\ISettings;
+use OCP\Util;
 
 class AdminSettings implements ISettings {
 	public function __construct(
@@ -16,6 +17,9 @@ class AdminSettings implements ISettings {
 	}
 
 	public function getForm(): TemplateResponse {
+		Util::addStyle(Application::APP_ID, 'tigersprite-admin');
+		Util::addScript(Application::APP_ID, 'tigersprite-admin');
+
 		return new TemplateResponse(Application::APP_ID, 'admin', [
 			'config' => $this->configService->getAdminFormValues(),
 		]);

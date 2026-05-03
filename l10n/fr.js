@@ -25,7 +25,19 @@ OC.L10N.register(
     "The file cannot be found.": "Le fichier est introuvable.",
     "TigerSprite supports only Markdown files.": "TigerSprite prend uniquement en charge les fichiers Markdown.",
     "You do not have permission to create a file in this directory.": "Vous n'avez pas l'autorisation de créer un fichier dans ce dossier.",
-    "User session is not available.": "La session utilisateur n'est pas disponible."
+    "User session is not available.": "La session utilisateur n'est pas disponible.",
+    "Settings saved successfully": "Settings saved successfully",
+    "Failed to save settings": "Failed to save settings",
+    "General": "General",
+    "Enable or disable the TigerSprite PDF export functionality for Markdown files.": "Enable or disable the TigerSprite PDF export functionality for Markdown files.",
+    "Path to the PHP binary (e.g., /usr/bin/php or php).": "Path to the PHP binary (e.g., /usr/bin/php or php).",
+    "Path to the TigerSprite CLI entry script (cli.php).": "Path to the TigerSprite CLI entry script (cli.php).",
+    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.",
+    "Whether to download the PDF directly or save it alongside the Markdown file.": "Whether to download the PDF directly or save it alongside the Markdown file.",
+    "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).": "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).",
+    "Log detailed conversion information to the Nextcloud log for troubleshooting.": "Log detailed conversion information to the Nextcloud log for troubleshooting.",
+    "PDF Settings": "PDF Settings",
+    "Debug": "Debug"
 },
     "nplurals=2; plural=(n > 1);"
 );

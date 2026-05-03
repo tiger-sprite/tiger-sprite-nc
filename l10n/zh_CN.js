@@ -25,7 +25,19 @@
     "The file cannot be found.": "找不到该文件。",
     "TigerSprite supports only Markdown files.": "TigerSprite 仅支持 Markdown 文件。",
     "You do not have permission to create a file in this directory.": "你没有权限在此目录创建文件。",
-    "User session is not available.": "当前用户会话不可用。"
+    "User session is not available.": "当前用户会话不可用。",
+    "Settings saved successfully": "设置保存成功",
+    "Failed to save settings": "保存设置失败",
+    "General": "常规",
+    "Enable or disable the TigerSprite PDF export functionality for Markdown files.": "启用或禁用 TigerSprite 的 Markdown 转 PDF 导出功能。",
+    "Path to the PHP binary (e.g., /usr/bin/php or php).": "PHP 二进制文件的路径（例如 /usr/bin/php 或 php）。",
+    "Path to the TigerSprite CLI entry script (cli.php).": "TigerSprite CLI 入口脚本的路径（cli.php）。",
+    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "选择 PDF 生成引擎。「自动」将优先使用 wkhtmltopdf，失败后自动切换到 dompdf。",
+    "Whether to download the PDF directly or save it alongside the Markdown file.": "选择是直接下载 PDF 还是将其保存到 Markdown 文件所在目录。",
+    "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).": "临时转换文件的保留天数（0 表示不清理）。",
+    "Log detailed conversion information to the Nextcloud log for troubleshooting.": "将详细的转换信息记录到 Nextcloud 日志中，便于排查问题。",
+    "PDF Settings": "PDF 设置",
+    "Debug": "调试"
 },
     "nplurals=1; plural=0;"
 );
