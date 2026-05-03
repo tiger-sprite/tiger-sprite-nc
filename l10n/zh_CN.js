@@ -1,4 +1,4 @@
-﻿OC.L10N.register(
+OC.L10N.register(
     "tigersprite",
     {
     "TigerSprite": "TigerSprite",
@@ -32,7 +32,7 @@
     "Enable or disable the TigerSprite PDF export functionality for Markdown files.": "启用或禁用 TigerSprite 的 Markdown 转 PDF 导出功能。",
     "Path to the PHP binary (e.g., /usr/bin/php or php).": "PHP 二进制文件的路径（例如 /usr/bin/php 或 php）。",
     "Path to the TigerSprite CLI entry script (cli.php).": "TigerSprite CLI 入口脚本的路径（cli.php）。",
-    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "选择 PDF 生成引擎。「自动」将优先使用 wkhtmltopdf，失败后自动切换到 dompdf。",
+    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "选择 PDF 生成引擎。“自动”将优先使用 wkhtmltopdf，失败后自动切换到 dompdf。",
     "Whether to download the PDF directly or save it alongside the Markdown file.": "选择是直接下载 PDF 还是将其保存到 Markdown 文件所在目录。",
     "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).": "临时转换文件的保留天数（0 表示不清理）。",
     "Log detailed conversion information to the Nextcloud log for troubleshooting.": "将详细的转换信息记录到 Nextcloud 日志中，便于排查问题。",

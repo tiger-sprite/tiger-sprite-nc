@@ -1,4 +1,4 @@
-﻿OC.L10N.register(
+OC.L10N.register(
     "tigersprite",
     {
     "TigerSprite": "TigerSprite",
@@ -30,12 +30,12 @@
     "Failed to save settings": "儲存設定失敗",
     "General": "一般",
     "Enable or disable the TigerSprite PDF export functionality for Markdown files.": "啟用或停用 TigerSprite 的 Markdown 轉 PDF 匯出功能。",
-    "Path to the PHP binary (e.g., /usr/bin/php or php).": "PHP 執行檔的路徑（例如 /usr/bin/php 或 php）。",
-    "Path to the TigerSprite CLI entry script (cli.php).": "TigerSprite CLI 進入點腳本的路徑（cli.php）。",
-    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "選擇 PDF 產生引擎。「自動」將優先使用 wkhtmltopdf，失敗後自動切換到 dompdf。",
-    "Whether to download the PDF directly or save it alongside the Markdown file.": "選擇直接下載 PDF 或將其儲存到 Markdown 檔案所在目錄。",
-    "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).": "暫存轉換檔案的保留天數（0 表示不清理）。",
-    "Log detailed conversion information to the Nextcloud log for troubleshooting.": "將詳細的轉換資訊記錄到 Nextcloud 日誌中，便於排查問題。",
+    "Path to the PHP binary (e.g., /usr/bin/php or php).": "PHP 執行檔路徑（例如 /usr/bin/php 或 php）。",
+    "Path to the TigerSprite CLI entry script (cli.php).": "TigerSprite CLI 入口腳本路徑（cli.php）。",
+    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "選擇 PDF 產生引擎。「自動」會先嘗試 wkhtmltopdf，失敗後再切換到 dompdf。",
+    "Whether to download the PDF directly or save it alongside the Markdown file.": "選擇直接下載 PDF，或將其儲存到 Markdown 檔案所在目錄。",
+    "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).": "清理前保留暫存轉換檔案的天數（0 表示停用清理）。",
+    "Log detailed conversion information to the Nextcloud log for troubleshooting.": "將詳細的轉換資訊寫入 Nextcloud 日誌，以便疑難排解。",
     "PDF Settings": "PDF 設定",
     "Debug": "偵錯"
 },

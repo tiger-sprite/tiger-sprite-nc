@@ -11,7 +11,10 @@ $config = $_['config'];
 <div id="tigersprite-admin">
 	<div class="tigersprite-header">
 		<div class="tigersprite-header-icon">
-			<img src="<?php p(\OC::$server->getURLGenerator()->imagePath('tigersprite', 'app-dark.svg')); ?>" alt="">
+			<picture>
+				<source srcset="<?php p(\OC::$server->getURLGenerator()->imagePath('tigersprite', 'app-dark.svg')); ?>" media="(prefers-color-scheme: dark)">
+				<img src="<?php p(\OC::$server->getURLGenerator()->imagePath('tigersprite', 'app.svg')); ?>" alt="<?php p($l->t('TigerSprite')); ?>">
+			</picture>
 		</div>
 		<div class="tigersprite-header-text">
 			<h2><?php p($l->t('TigerSprite')); ?></h2>
@@ -23,10 +26,7 @@ $config = $_['config'];
 		<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>">
 
 		<div class="tigersprite-settings-card">
-			<h3 class="tigersprite-card-title">
-				<span class="card-icon">⚙️</span>
-				<?php p($l->t('General')); ?>
-			</h3>
+			<h3 class="tigersprite-card-title"><?php p($l->t('General')); ?></h3>
 
 			<div class="tigersprite-checkbox-field">
 				<input type="hidden" name="enabled" value="0">
@@ -39,10 +39,7 @@ $config = $_['config'];
 		</div>
 
 		<div class="tigersprite-settings-card">
-			<h3 class="tigersprite-card-title">
-				<span class="card-icon">🚀</span>
-				<?php p($l->t('Runtime')); ?>
-			</h3>
+			<h3 class="tigersprite-card-title"><?php p($l->t('Runtime')); ?></h3>
 
 			<div class="tigersprite-field">
 				<label class="tigersprite-field-label" for="tigersprite-runtime-mode"><?php p($l->t('Runtime mode')); ?></label>
@@ -65,10 +62,7 @@ $config = $_['config'];
 		</div>
 
 		<div class="tigersprite-settings-card">
-			<h3 class="tigersprite-card-title">
-				<span class="card-icon">📄</span>
-				<?php p($l->t('PDF Settings')); ?>
-			</h3>
+			<h3 class="tigersprite-card-title"><?php p($l->t('PDF Settings')); ?></h3>
 
 			<div class="tigersprite-field">
 				<label class="tigersprite-field-label" for="tigersprite-generator"><?php p($l->t('PDF generator')); ?></label>
@@ -97,10 +91,7 @@ $config = $_['config'];
 		</div>
 
 		<div class="tigersprite-settings-card">
-			<h3 class="tigersprite-card-title">
-				<span class="card-icon">🔧</span>
-				<?php p($l->t('Debug')); ?>
-			</h3>
+			<h3 class="tigersprite-card-title"><?php p($l->t('Debug')); ?></h3>
 
 			<div class="tigersprite-checkbox-field">
 				<input type="hidden" name="debug_logging" value="0">

@@ -6,7 +6,7 @@
 	<description><![CDATA[Adds a TigerSprite Export to PDF action for Markdown files in Nextcloud.]]></description>
 	<licence>agpl</licence>
 	<author mail="dev@ebf.hk">XTiger</author>
-	<version>0.1.4</version>
+	<version>0.1.5</version>
 	<namespace>Tigersprite</namespace>
 	<category>files</category>
 	<category>tools</category>

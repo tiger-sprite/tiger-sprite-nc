@@ -1,4 +1,4 @@
-﻿OC.L10N.register(
+OC.L10N.register(
     "tigersprite",
     {
     "TigerSprite": "TigerSprite",
@@ -26,18 +26,18 @@
     "TigerSprite supports only Markdown files.": "TigerSprite は Markdown ファイルのみ対応しています。",
     "You do not have permission to create a file in this directory.": "このディレクトリにファイルを作成する権限がありません。",
     "User session is not available.": "ユーザーセッションを利用できません。",
-    "Settings saved successfully": "Settings saved successfully",
-    "Failed to save settings": "Failed to save settings",
-    "General": "General",
-    "Enable or disable the TigerSprite PDF export functionality for Markdown files.": "Enable or disable the TigerSprite PDF export functionality for Markdown files.",
-    "Path to the PHP binary (e.g., /usr/bin/php or php).": "Path to the PHP binary (e.g., /usr/bin/php or php).",
-    "Path to the TigerSprite CLI entry script (cli.php).": "Path to the TigerSprite CLI entry script (cli.php).",
-    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.",
-    "Whether to download the PDF directly or save it alongside the Markdown file.": "Whether to download the PDF directly or save it alongside the Markdown file.",
-    "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).": "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).",
-    "Log detailed conversion information to the Nextcloud log for troubleshooting.": "Log detailed conversion information to the Nextcloud log for troubleshooting.",
-    "PDF Settings": "PDF Settings",
-    "Debug": "Debug"
+    "Settings saved successfully": "設定を保存しました",
+    "Failed to save settings": "設定の保存に失敗しました",
+    "General": "一般",
+    "Enable or disable the TigerSprite PDF export functionality for Markdown files.": "Markdown ファイル向けの TigerSprite PDF エクスポート機能を有効または無効にします。",
+    "Path to the PHP binary (e.g., /usr/bin/php or php).": "PHP バイナリへのパス（例: /usr/bin/php または php）。",
+    "Path to the TigerSprite CLI entry script (cli.php).": "TigerSprite CLI エントリースクリプト（cli.php）へのパス。",
+    "Choose the PDF generation engine. \"Auto\" will try wkhtmltopdf first, then fall back to dompdf.": "PDF 生成エンジンを選択します。「自動」は最初に wkhtmltopdf を試し、失敗した場合は dompdf に切り替えます。",
+    "Whether to download the PDF directly or save it alongside the Markdown file.": "PDF を直接ダウンロードするか、Markdown ファイルと同じ場所に保存するかを選択します。",
+    "Number of days to keep temporary conversion files before cleanup (0 = disable cleanup).": "クリーンアップ前に一時変換ファイルを保持する日数（0 = クリーンアップを無効化）。",
+    "Log detailed conversion information to the Nextcloud log for troubleshooting.": "トラブルシューティングのため、詳細な変換情報を Nextcloud ログに記録します。",
+    "PDF Settings": "PDF 設定",
+    "Debug": "デバッグ"
 },
     "nplurals=1; plural=0;"
 );
