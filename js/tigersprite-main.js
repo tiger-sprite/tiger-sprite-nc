@@ -115,6 +115,29 @@
 		}
 	}
 
+	OCA.TigerSprite.getEventBus = function() {
+		if (window.OC && window.OC._eventBus && window._nc_event_bus === undefined) {
+			window._nc_event_bus = window.OC._eventBus
+		}
+
+		const bus = window._nc_event_bus
+		if (!bus || typeof bus.emit !== 'function') {
+			return null
+		}
+
+		return bus
+	}
+
+	OCA.TigerSprite.emit = function(name, payload) {
+		const bus = OCA.TigerSprite.getEventBus()
+		if (!bus) {
+			return false
+		}
+
+		bus.emit(name, payload)
+		return true
+	}
+
 	OCA.TigerSprite.FileClick = function(fileName, context) {
 		if (!OCA.TigerSprite.isMarkdownName(fileName)) {
 			return
@@ -139,8 +162,7 @@
 		if (OCA.TigerSprite.setting.outputBehavior === 'save') {
 			try {
 				const savedFile = await OCA.TigerSprite.saveToCurrentDirectory(fileId)
-				await OCA.TigerSprite.refreshFileList(savedFile, node, view, dir, context)
-				OCA.TigerSprite.clearSelection(node, context)
+				await OCA.TigerSprite.syncSavedFile(savedFile, node, view, dir, context)
 			} catch (error) {
 				OCA.TigerSprite.showError(error.message || OCA.TigerSprite.t('Failed to convert file'))
 			}
@@ -151,13 +173,31 @@
 		return null
 	}
 
-	OCA.TigerSprite.refreshFileList = async function(savedFile, sourceNode, view, dir, context) {
+	OCA.TigerSprite.syncSavedFile = async function(savedFile, sourceNode, view, dir, context) {
+		if (!savedFile || !savedFile.id) {
+			return OCA.TigerSprite.reloadCurrentPage()
+		}
+
+		if (context && context.fileList && context.fileList.dirInfo && context.fileList.dirInfo.id === savedFile.parentId && typeof context.fileList.add === 'function') {
+			context.fileList.add(savedFile, { animate: true })
+			return
+		}
+
 		if (view && typeof view.getContents === 'function') {
 			try {
-				await view.getContents(dir || (sourceNode && sourceNode.dirname) || '/')
-				return
+				const viewContents = await view.getContents(dir || (sourceNode && sourceNode.dirname) || '/')
+				if (viewContents && viewContents.folder && viewContents.folder.fileid === savedFile.parentId && Array.isArray(viewContents.contents)) {
+					const createdNode = viewContents.contents.find((entry) => {
+						const entryId = entry && (entry.fileid || entry.id || entry.fileId)
+						return Number(entryId) === Number(savedFile.id)
+					})
+
+					if (createdNode && OCA.TigerSprite.emit('files:node:created', createdNode)) {
+						return
+					}
+				}
 			} catch (error) {
-				// Fall through to legacy refresh paths for older or partially loaded Files UIs.
+				// Fall back below if the active Files view cannot be synchronized incrementally.
 			}
 		}
 
@@ -166,33 +206,15 @@
 			return
 		}
 
-		if (OCA.Files && OCA.Files.App && OCA.Files.App.fileList && typeof OCA.Files.App.fileList.reload === 'function') {
-			OCA.Files.App.fileList.reload()
-		}
+		OCA.TigerSprite.reloadCurrentPage()
 	}
 
-	OCA.TigerSprite.clearSelection = function(sourceNode, context) {
-		if (context && context.fileList && typeof context.fileList.unselectAll === 'function') {
-			context.fileList.unselectAll()
-			return
-		}
-
-		const appContent = document.getElementById('app-content-vue') || document.getElementById('app-content') || document
-		const selectors = [
-			'input[type="checkbox"]:checked.files-list__row-checkbox',
-			'.files-list__row-checkbox input[type="checkbox"]:checked',
-			'.selectCheckBox:checked',
-		]
-
-		appContent.querySelectorAll(selectors.join(',')).forEach((checkbox) => {
-			if (typeof checkbox.click === 'function') {
-				checkbox.click()
-				return
+	OCA.TigerSprite.reloadCurrentPage = function() {
+		window.setTimeout(() => {
+			if (window.location && typeof window.location.reload === 'function') {
+				window.location.reload()
 			}
-
-			checkbox.checked = false
-			checkbox.dispatchEvent(new Event('change', { bubbles: true }))
-		})
+		}, 500)
 	}
 
 	OCA.TigerSprite.registerLegacyAction = function() {
