@@ -21,6 +21,12 @@ class SettingsController extends Controller {
 		parent::__construct(Application::APP_ID, $request);
 	}
 
+	/**
+	 * Save admin settings.
+	 *
+	 * This method is admin-only by default (no #[NoAdminRequired] attribute).
+	 * Only administrators can modify TigerSprite configuration.
+	 */
 	public function save(): DataResponse|RedirectResponse {
 		$this->configService->setEnabled($this->request->getParam('enabled') === '1');
 		$this->configService->setPhpPath((string)$this->request->getParam('php_path', 'php'));
@@ -34,8 +40,11 @@ class SettingsController extends Controller {
 			return new DataResponse(['success' => true]);
 		}
 
-		return new RedirectResponse(
-			$this->urlGenerator->linkToRoute('settings.AdminSettings.index', ['section' => 'tigersprite'])
-		);
+		try {
+			$redirectUrl = $this->urlGenerator->linkToRoute('settings.AdminSettings.index', ['section' => 'tigersprite']);
+		} catch (\Throwable) {
+			$redirectUrl = $this->urlGenerator->linkToRoute('settings.AdminSettings.index');
+		}
+		return new RedirectResponse($redirectUrl);
 	}
 }

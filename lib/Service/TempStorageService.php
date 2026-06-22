@@ -18,14 +18,14 @@ class TempStorageService {
 	public function getRootPath(): string {
 		$root = rtrim($this->tempManager->getTempBaseDir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . self::ROOT_DIR;
 		if (!is_dir($root)) {
-			mkdir($root, 0777, true);
+			mkdir($root, 0700, true);
 		}
 		return $root;
 	}
 
 	public function createWorkDirectory(): string {
 		$path = $this->getRootPath() . DIRECTORY_SEPARATOR . 'job_' . date('Ymd_His') . '_' . bin2hex(random_bytes(4));
-		if (!mkdir($path, 0777, true) && !is_dir($path)) {
+		if (!mkdir($path, 0700, true) && !is_dir($path)) {
 			throw new \RuntimeException('Failed to create TigerSprite working directory.');
 		}
 		return $path;

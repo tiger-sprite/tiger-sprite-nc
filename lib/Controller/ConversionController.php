@@ -10,7 +10,6 @@ use OCA\Tigersprite\Service\TigerSpriteConversionService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
-use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\Files\File;
@@ -31,7 +30,6 @@ class ConversionController extends Controller {
 	}
 
 	#[NoAdminRequired]
-	#[NoCSRFRequired]
 	public function download(int $fileId): DataDownloadResponse {
 		$this->ensureEnabled();
 		$file = $this->getMarkdownFile($fileId);

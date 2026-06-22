@@ -71,17 +71,19 @@
 			return
 		}
 
-		const iframeId = 'tigersprite-download-frame'
-		let iframe = document.getElementById(iframeId)
-		if (!iframe) {
-			iframe = document.createElement('iframe')
-			iframe.id = iframeId
-			iframe.name = iframeId
-			iframe.style.display = 'none'
-			document.body.appendChild(iframe)
-		}
+		const form = document.createElement('form')
+		form.method = 'POST'
+		form.action = OC.generateUrl('/apps/tigersprite/download/{fileId}', { fileId })
+		form.style.display = 'none'
 
-		iframe.src = OC.generateUrl('/apps/tigersprite/download/{fileId}', { fileId })
+		const tokenInput = document.createElement('input')
+		tokenInput.name = 'requesttoken'
+		tokenInput.value = OC.requestToken || ''
+		form.appendChild(tokenInput)
+
+		document.body.appendChild(form)
+		form.submit()
+		document.body.removeChild(form)
 	}
 
 	OCA.TigerSprite.saveToCurrentDirectory = async function(fileId) {
@@ -234,7 +236,7 @@
 			}
 		}
 
-		;['text/markdown', 'text/x-markdown', 'text/plain'].forEach((mime) => {
+		;['text/markdown', 'text/x-markdown'].forEach((mime) => {
 			OCA.Files.fileActions.registerAction({
 				name: actionName,
 				displayName: OCA.TigerSprite.t('TigerSprite Export to PDF'),

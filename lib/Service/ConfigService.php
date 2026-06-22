@@ -25,7 +25,7 @@ class ConfigService {
 	private const KEY_DEBUG_LOGGING = 'debug_logging';
 
 	private const DEFAULT_PHP_PATH = 'php';
-	private const DEFAULT_CLI_PATH = 'F:\\web\\tiger-sprite\\tiger-sprite\\markdown-convert-sprite\\php-bin\\cli.php';
+	private const DEFAULT_CLI_PATH = '';
 
 	public function __construct(
 		private IConfig $config,

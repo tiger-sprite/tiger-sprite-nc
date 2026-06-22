@@ -22,9 +22,10 @@
 				var response = await fetch(OC.generateUrl('/apps/tigersprite/settings/save'), {
 					method: 'POST',
 					body: formData,
-					headers: {
-						'X-Requested-With': 'XMLHttpRequest',
-					},
+				headers: {
+					'X-Requested-With': 'XMLHttpRequest',
+					'requesttoken': OC.requestToken || '',
+				},
 				})
 
 				var data = await response.json()
