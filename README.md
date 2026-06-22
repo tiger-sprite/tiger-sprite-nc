@@ -1,5 +1,7 @@
 # TigerSprite
 
+[![GitHub](https://img.shields.io/badge/GitHub-tiger--sprite/tiger--sprite--nc-181717?logo=github)](https://github.com/tiger-sprite/tiger-sprite-nc)
+
 **TigerSprite** is a Nextcloud app that adds one-click Markdown-to-PDF export functionality.
 
 Right-click any Markdown file in the Nextcloud file interface and select **TigerSprite Export to PDF** to quickly convert your document.
@@ -33,7 +35,7 @@ Right-click any Markdown file in the Nextcloud file interface and select **Tiger
 
 ### 1. Get TigerSprite CLI
 
-TigerSprite depends on the standalone CLI converter tool [`markdown-convert-sprite`](https://github.com/your-repo/markdown-convert-sprite). Deploy it on your server first.
+TigerSprite depends on the standalone CLI converter tool [`markdown-convert-sprite`](https://github.com/tiger-sprite/markdown-convert-sprite). Deploy it on your server first.
 
 ### 2. Install the App
 
