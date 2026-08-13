@@ -262,16 +262,7 @@
 			return false
 		}
 
-		if (!Array.isArray(window._nc_fileactions)) {
-			window._nc_fileactions = []
-		}
-
-		if (window._nc_fileactions.some((action) => action && action.id === actionName)) {
-			OCA.TigerSprite.registeredModern = true
-			return true
-		}
-
-		window._nc_fileactions.push({
+		const action = {
 			id: actionName,
 			displayName() {
 				return OCA.TigerSprite.t('TigerSprite Export to PDF')
@@ -279,17 +270,50 @@
 			iconSvgInline() {
 				return actionIcon
 			},
-			enabled(nodes) {
+			// NC 30+ (including NC 33) passes a context object { nodes, view, folder, contents }.
+			// Older files apps pass the plain array of nodes.
+			enabled(nodesOrContext) {
+				const nodes = nodesOrContext && nodesOrContext.nodes ? nodesOrContext.nodes : nodesOrContext
 				if (!Array.isArray(nodes) || nodes.length !== 1) {
 					return false
 				}
 
 				return OCA.TigerSprite.isMarkdownNode(nodes[0]) && OCA.TigerSprite.hasReadPermission(nodes[0])
 			},
-			exec: OCA.TigerSprite.FileClickExec,
+			async exec(nodesOrContext) {
+				const context = nodesOrContext && nodesOrContext.nodes ? nodesOrContext : null
+				const node = context ? nodesOrContext.nodes[0] : nodesOrContext
+				const view = context ? context.view : null
+				const dir = context ? (context.folder && context.folder.path) || null : null
+				return OCA.TigerSprite.FileClickExec(node, view, dir, context)
+			},
 			order: 35,
-		})
+		}
 
+		// Register into the @nextcloud/files v4 registry used by NC 30+ (including NC 33).
+		const scope = window._nc_files_scope && window._nc_files_scope.v4_0
+		if (scope && scope.fileActions instanceof Map) {
+			if (!scope.fileActions.has(action.id)) {
+				scope.fileActions.set(action.id, action)
+				if (scope.registry && typeof scope.registry.dispatchTypedEvent === 'function') {
+					scope.registry.dispatchTypedEvent('register:action', new CustomEvent('register:action', { detail: action }))
+				}
+			}
+			OCA.TigerSprite.registeredModern = true
+			return true
+		}
+
+		// Fallback: legacy registry (NC 28-32 / @nextcloud/files v3)
+		if (!Array.isArray(window._nc_fileactions)) {
+			window._nc_fileactions = []
+		}
+
+		if (window._nc_fileactions.some((entry) => entry && entry.id === action.id)) {
+			OCA.TigerSprite.registeredModern = true
+			return true
+		}
+
+		window._nc_fileactions.push(action)
 		OCA.TigerSprite.registeredModern = true
 		return true
 	}

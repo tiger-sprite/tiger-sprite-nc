@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0] – 2026-08-13
+
+### Fixed
+
+- File action no longer appears in Nextcloud 33 file list: the "TigerSprite Export to PDF" action was registered into the legacy `_nc_fileactions` registry, which the Nextcloud 33 files app no longer reads
+- Register the action into the `@nextcloud/files` v4 registry (`window._nc_files_scope.v4_0.fileActions`) used by NC 30+ (including NC 33), with a fallback to the legacy registry for older versions
+- Make the `enabled`/`exec` callbacks compatible with the new context-object signature (`{ nodes, view, folder, contents }`) in addition to the old bare-array signature
+
 ## [0.1.0] – 2026-06-22
 
 ### Added

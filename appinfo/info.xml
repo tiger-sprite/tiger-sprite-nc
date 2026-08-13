@@ -12,7 +12,7 @@
 - Multi-language support]]></description>
 	<licence>AGPL-3.0-or-later</licence>
 	<author mail="dev@ebf.hk">adam</author>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 	<namespace>Tigersprite</namespace>
 	<category>files</category>
 	<category>tools</category>
